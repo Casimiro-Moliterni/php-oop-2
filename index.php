@@ -8,6 +8,19 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
  come immagine, titolo, prezzo, icona della categoria ed il tipo di articolo che si sta visualizzando
   (prodotto, cibo, gioco, cuccia). -->
 
+
+  <!-- sito ecommerce  
+  che vende prodotti per animali --- classe principale Prodotti con (informazioni generali)
+  ci sono due categorie cani e gatti 
+  i prodotti variano cibo,giochi,cucce,saponi,accessori ecc..
+ -->
+<?php 
+
+require_once __DIR__ . '/Models/Products.php';
+require_once __DIR__ . '/Models/ProductDog.php';
+require_once __DIR__ . '/Models/ProductCat.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +41,7 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
     </header>
     <main>
         <section>
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row row-cols-4 ">
                     <div class="col " >
                         <div class="card" style="width:250px ">
@@ -45,7 +58,7 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer>
