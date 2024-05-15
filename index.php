@@ -28,7 +28,24 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
     </header>
     <main>
         <section>
-    
+            <div class="container">
+                <div class="row row-cols-4 ">
+                    <div class="col " >
+                        <div class="card" style="width:250px ">
+                            <img  src="https://shop-cdn-m.mediazs.com/bilder/royal/canin/mini/starter/mother/babydog/crocchette/cane/9/400/rc_spt_dry_ministart_mv_2_it_it_9.jpg"
+                                class="card-img-top" alt="...">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
