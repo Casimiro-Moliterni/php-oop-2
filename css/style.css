@@ -1,0 +1,8 @@
+.ms_card{
+background-color: rgb(109, 111, 108);
+}
+
+.ms_card img{
+    height: 200px;
+    object-fit: contain;
+}

@@ -9,16 +9,32 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
   (prodotto, cibo, gioco, cuccia). -->
 
 
-  <!-- sito ecommerce  
+<!-- sito ecommerce  
   che vende prodotti per animali --- classe principale Prodotti con (informazioni generali)
   ci sono due categorie cani e gatti 
   i prodotti variano cibo,giochi,cucce,saponi,accessori ecc..
  -->
-<?php 
+<?php
 
 require_once __DIR__ . '/Models/Products.php';
 require_once __DIR__ . '/Models/ProductDog.php';
 require_once __DIR__ . '/Models/ProductCat.php';
+
+$food_for_dog = new ProductDog('Croccantini', 15.00, '20%', 'Cani', './img/croccantini_cani.jpeg');
+$food_for_cat = new ProductDog('Croccantini ', 10.00, '10%', 'Gatti', './img/croccantini_gatti.jpg');
+$dog_kennel = new ProductDog('Cuccia ', 80.00, '30%', 'Cani', './img/cuccia_cani.jpeg');
+$cat_house = new ProductDog('Cuccia ', 40.00, '20%', 'Gatti', './img/cuccia_gatti.jpg');
+$dog_games = new ProductDog('Corda ', 10.00, '5%', 'Cani', './img/giochi_cani.jpeg');
+$cat_games = new ProductDog('Casetta', 25.00, '10%', 'Gatti', './img/giochi_gatti.jpeg');
+$produts = [
+
+    $food_for_dog,
+    $food_for_cat,
+    $dog_kennel,
+    $cat_house,
+    $dog_games,
+    $cat_games
+];
 
 ?>
 <!DOCTYPE html>
@@ -31,34 +47,81 @@ require_once __DIR__ . '/Models/ProductCat.php';
     <!-- link bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- link css  -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <header>
-        <nav>
-
+<body >
+    <header >
+        <nav class="navbar  navbar-expand-lg bg-body-tertiary mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Pet Shop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
         </nav>
     </header>
     <main>
         <section>
-            <!-- <div class="container">
-                <div class="row row-cols-4 ">
-                    <div class="col " >
-                        <div class="card" style="width:250px ">
-                            <img  src="https://shop-cdn-m.mediazs.com/bilder/royal/canin/mini/starter/mother/babydog/crocchette/cane/9/400/rc_spt_dry_ministart_mv_2_it_it_9.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="card-header">
-                                Featured
+            <div class="container">
+                <div class="row justify-content-center ">
+                    <?php foreach ($produts as $product) { ?>
+                        <div class="col-3 m-2">
+                            <div class="card ms_card" style="width:250px ">
+                                <img src="<?php echo $product->image ?>" class="card-img-top" alt="...">
+                                <div class="card-header bg-success text-white">
+                                    <?php echo $product->name ?>
+                                </div>
+                                <ul class="list-group list-group-flush text-white bg-success">
+                                    <li class="list-group-item text-white bg-success">
+                                        <?php echo 'prezzo :' . ' ' . $product->price . '€' ?>
+                                    </li>
+                                    <li class="list-group-item text-white bg-success">
+                                        <?php echo 'sconto del :' . ' ' . $product->discount ?>
+                                    </li>
+                                    <li class="list-group-item text-white bg-success">
+                                        <?php echo 'perfetto per :' . ' ' . $product->category ?>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                            </ul>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
-            </div> -->
+            </div>
         </section>
     </main>
     <footer>
