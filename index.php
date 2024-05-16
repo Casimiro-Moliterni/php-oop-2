@@ -27,19 +27,38 @@ $cat = new Category('Gatti', 'fa-solid fa-cat');
 
 $food = new Food_pet('Croccantini', 10.99, $dog, ['carne', 'carote', 'patate', 'uova', 'acqua']);
 $food->image = './img/croccantini_cani.jpeg';
+$food->description='Croccantini gustosi per cani';
 
 $kennel = new Kennel_pet('Cuccia', 90.00, $dog);
 $kennel->size = 'XL';
 $kennel->image = './img/cuccia_cani.jpeg';
+$kennel->description='Cuccia confortevole per cani';
 
 $game = new Game_pet('Corda', 7.99, $dog);
 $game->image = './img/giochi_cani.jpeg';
+$game->description='Gioco perfetto per il tuo animaletto a 4 zampe';
+
+$food_cat = new Food_pet('Croccantini', 5.99, $cat, [ 'carote', 'patate', 'acqua']);
+$food_cat->image = './img/croccantini_gatti.jpg';
+$food_cat->description='Croccantini gustosi per gatti';
+
+$kennel_cat = new Kennel_pet('Cuccia', 40.00, $cat);
+$kennel_cat->size = 'XL';
+$kennel_cat->image = './img/cuccia_gatti.jpg';
+$kennel_cat->description='Cuccia confortevole per gatti';
+
+$game_cat = new Game_pet('Corda', 7.99, $cat);
+$game_cat->image = './img/giochi_gatti.jpeg';
+$game_cat->description='Gioco perfetto per il tuo animaletto a 4 zampe';
 
 $produts = [
 
     $food,
     $kennel,
-    $game
+    $game,
+    $food_cat,
+    $kennel_cat,
+    $game_cat
 ];
 
 ?>
@@ -129,12 +148,15 @@ $produts = [
                                 </div>
                                 <ul class="list-group list-group-flush text-white bg-success">
                                     <?php if ($single_product->description) { ?>
-                                        <li class="list-group-item text-white bg-success"></li>
-                                        Ingredienti : <?php echo $single_product->description; ?>
+                                        <li class="list-group-item text-white bg-success">
+                                        Descrizione : <?php echo $single_product->description; ?>
                                         </li>
                                     <?php } ?>
                                     <li class="list-group-item text-white bg-success">
                                         Prezzo: <?php echo $single_product->price; ?>
+                                    </li>
+                                    <li class="list-group-item text-white bg-success">
+                                        Genere di Prodotto: <?php echo $product_type; ?>
                                     </li>
                                     <li class="list-group-item text-white bg-success">
                                         Categoria : <?php echo $single_product->category->name; ?>
@@ -143,8 +165,8 @@ $produts = [
                                         </span>
                                     </li>
                                     <?php if ($class_name === 'Food_pet') { ?>
-                                        <li class="list-group-item text-white bg-success"></li>
-                                        Ingredienti : <?php echo implode(', ', $single_product->ingredients); ?>
+                                        <li class="list-group-item text-white bg-success">
+                                         Ingredienti : <?php echo implode(', ', $single_product->ingredients); ?>
                                         </li>
                                     <?php } ?>
                                 </ul>
