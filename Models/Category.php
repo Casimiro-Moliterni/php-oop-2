@@ -6,9 +6,8 @@ class Category extends Products{
     
         public function __construct($_name, $_img) {
             $this->name = $_name;
-            $this->image = $_img;
+            $this->img = $_img;
         }
-    
     
 }
 ?>

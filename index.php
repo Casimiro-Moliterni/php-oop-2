@@ -22,17 +22,25 @@ require_once __DIR__ . '/Models/Food_pet.php';
 require_once __DIR__ . '/Models/Category.php';
 require_once __DIR__ . '/Models/Game_pet.php';
 
+$dog = new Category('Cani', 'fa-solid fa-dog');
+$cat = new Category('Gatti', 'fa-solid fa-cat');
 
+$food = new Food_pet('Croccantini', 10.99, $dog, ['carne', 'carote', 'patate', 'uova', 'acqua']);
+$food->image = './img/croccantini_cani.jpeg';
 
-$food= new Food_pet('Croccantini',10.99,'categoria',['carne','carote','patate','uova','acqua']);
-$kennel = new Kennel_pet('Cuccia',90.00,'categoria');
-var_dump( $kennel);
-// $produts = [
+$kennel = new Kennel_pet('Cuccia', 90.00, $dog);
+$kennel->size = 'XL';
+$kennel->image = './img/cuccia_cani.jpeg';
 
-//     $food_pet,
-//     $kennel_pet,
-//     $game_pet,
-// ];
+$game = new Game_pet('Corda', 7.99, $dog);
+$game->image = './img/giochi_cani.jpeg';
+
+$produts = [
+
+    $food,
+    $kennel,
+    $game
+];
 
 ?>
 <!DOCTYPE html>
@@ -47,10 +55,14 @@ var_dump( $kennel);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- link css  -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- link font awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body >
-    <header >
+<body>
+    <header>
         <nav class="navbar  navbar-expand-lg bg-body-tertiary mb-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Pet Shop</a>
@@ -97,27 +109,49 @@ var_dump( $kennel);
         <section>
             <div class="container">
                 <div class="row justify-content-center ">
+                    <?php foreach ($produts as $single_product) { ?>
+                        <?php
+                        $class_name = get_class($single_product);
+                        $product_type = 'Prodotto Generico';
+                        if ($class_name == 'Food_pet') {
+                            $product_type = 'Cibo';
+                        } elseif ($class_name === 'Kennel_pet') {
+                            $product_type = 'Cuccia';
+                        } elseif ($class_name == 'Game_pet') {
+                            $product_type = 'Gioco';
+                        }
+                        ?>
                         <div class="col-3 m-2">
                             <div class="card ms_card" style="width:250px ">
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="<?php echo $single_product->image; ?>" class="card-img-top" alt="...">
                                 <div class="card-header bg-success text-white">
-        
+                                    <?php echo $single_product->name; ?>
                                 </div>
                                 <ul class="list-group list-group-flush text-white bg-success">
+                                    <?php if ($single_product->description) { ?>
+                                        <li class="list-group-item text-white bg-success"></li>
+                                        Ingredienti : <?php echo $single_product->description; ?>
+                                        </li>
+                                    <?php } ?>
                                     <li class="list-group-item text-white bg-success">
-                                        
+                                        Prezzo: <?php echo $single_product->price; ?>
                                     </li>
                                     <li class="list-group-item text-white bg-success">
-                                        
+                                        Categoria : <?php echo $single_product->category->name; ?>
+                                        <span>
+                                            <i class=" <?php echo $single_product->category->img; ?>"></i>
+                                        </span>
                                     </li>
-                                    <li class="list-group-item text-white bg-success">
-                                       
-                                    </li>
+                                    <?php if ($class_name === 'Food_pet') { ?>
+                                        <li class="list-group-item text-white bg-success"></li>
+                                        Ingredienti : <?php echo implode(', ', $single_product->ingredients); ?>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
-                   
-            </div>
+                    <?php } ?>
+                </div>
         </section>
     </main>
     <footer>
