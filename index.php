@@ -17,24 +17,22 @@ Stampiamo delle card contenenti i dettagli dei prodotti,
 <?php
 
 require_once __DIR__ . '/Models/Products.php';
-require_once __DIR__ . '/Models/ProductDog.php';
-require_once __DIR__ . '/Models/ProductCat.php';
+require_once __DIR__ . '/Models/Kennel_pet.php';
+require_once __DIR__ . '/Models/Food_pet.php';
+require_once __DIR__ . '/Models/Category.php';
+require_once __DIR__ . '/Models/Game_pet.php';
 
-$food_for_dog = new ProductDog('Croccantini', 15.00, '20%', 'Cani', './img/croccantini_cani.jpeg');
-$food_for_cat = new ProductDog('Croccantini ', 10.00, '10%', 'Gatti', './img/croccantini_gatti.jpg');
-$dog_kennel = new ProductDog('Cuccia ', 80.00, '30%', 'Cani', './img/cuccia_cani.jpeg');
-$cat_house = new ProductDog('Cuccia ', 40.00, '20%', 'Gatti', './img/cuccia_gatti.jpg');
-$dog_games = new ProductDog('Corda ', 10.00, '5%', 'Cani', './img/giochi_cani.jpeg');
-$cat_games = new ProductDog('Casetta', 25.00, '10%', 'Gatti', './img/giochi_gatti.jpeg');
-$produts = [
 
-    $food_for_dog,
-    $food_for_cat,
-    $dog_kennel,
-    $cat_house,
-    $dog_games,
-    $cat_games
-];
+
+$food= new Food_pet('Croccantini',10.99,'categoria',['carne','carote','patate','uova','acqua']);
+$kennel = new Kennel_pet('Cuccia',90.00,'categoria');
+var_dump( $kennel);
+// $produts = [
+
+//     $food_pet,
+//     $kennel_pet,
+//     $game_pet,
+// ];
 
 ?>
 <!DOCTYPE html>
@@ -99,28 +97,26 @@ $produts = [
         <section>
             <div class="container">
                 <div class="row justify-content-center ">
-                    <?php foreach ($produts as $product) { ?>
                         <div class="col-3 m-2">
                             <div class="card ms_card" style="width:250px ">
-                                <img src="<?php echo $product->image ?>" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                                 <div class="card-header bg-success text-white">
-                                    <?php echo $product->name ?>
+        
                                 </div>
                                 <ul class="list-group list-group-flush text-white bg-success">
                                     <li class="list-group-item text-white bg-success">
-                                        <?php echo 'prezzo :' . ' ' . $product->price . '€' ?>
+                                        
                                     </li>
                                     <li class="list-group-item text-white bg-success">
-                                        <?php echo 'sconto del :' . ' ' . $product->discount ?>
+                                        
                                     </li>
                                     <li class="list-group-item text-white bg-success">
-                                        <?php echo 'perfetto per :' . ' ' . $product->category ?>
+                                       
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    <?php } ?>
-                </div>
+                   
             </div>
         </section>
     </main>
