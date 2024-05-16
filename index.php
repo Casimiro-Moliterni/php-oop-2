@@ -141,7 +141,7 @@ $produts = [
                         }
                         ?>
                         <div class="col-3 m-2">
-                            <div class="card ms_card" style="width:250px ">
+                            <div class="card ms_card bg-success" style="width:250px ;height:500px;">
                                 <img src="<?php echo $single_product->image; ?>" class="card-img-top" alt="...">
                                 <div class="card-header bg-success text-white">
                                     <?php echo $single_product->name; ?>
