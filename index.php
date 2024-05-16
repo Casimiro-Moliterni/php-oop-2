@@ -42,12 +42,12 @@ $food_cat = new Food_pet('Croccantini', 5.99, $cat, [ 'carote', 'patate', 'acqua
 $food_cat->image = './img/croccantini_gatti.jpg';
 $food_cat->description='Croccantini gustosi per gatti';
 
-$kennel_cat = new Kennel_pet('Cuccia', 40.00, $cat);
+$kennel_cat = new Kennel_pet('Cat house', 40.00, $cat);
 $kennel_cat->size = 'XL';
 $kennel_cat->image = './img/cuccia_gatti.jpg';
 $kennel_cat->description='Cuccia confortevole per gatti';
 
-$game_cat = new Game_pet('Corda', 7.99, $cat);
+$game_cat = new Game_pet('Palla di pelo', 7.99, $cat);
 $game_cat->image = './img/giochi_gatti.jpeg';
 $game_cat->description='Gioco perfetto per il tuo animaletto a 4 zampe';
 
@@ -153,7 +153,7 @@ $produts = [
                                         </li>
                                     <?php } ?>
                                     <li class="list-group-item text-white bg-success">
-                                        Prezzo: <?php echo $single_product->price; ?>
+                                        Prezzo: <?php echo $single_product->price . ' '. 'Euro'; ?>
                                     </li>
                                     <li class="list-group-item text-white bg-success">
                                         Genere di Prodotto: <?php echo $product_type; ?>
