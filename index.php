@@ -28,28 +28,35 @@ $cat = new Category('Gatti', 'fa-solid fa-cat');
 $food = new Food_pet('Croccantini', 10.99, $dog, ['carne', 'carote', 'patate', 'uova', 'acqua']);
 $food->image = './img/croccantini_cani.jpeg';
 $food->description='Croccantini gustosi per cani';
+$food->made_in='USA';
 
 $kennel = new Kennel_pet('Cuccia', 90.00, $dog);
 $kennel->size = 'XL';
 $kennel->image = './img/cuccia_cani.jpeg';
 $kennel->description='Cuccia confortevole per cani';
+$kennel->made_in='ITA';
 
 $game = new Game_pet('Corda', 7.99, $dog);
 $game->image = './img/giochi_cani.jpeg';
 $game->description='Gioco perfetto per il tuo animaletto a 4 zampe';
+$game->made_in='USA';
 
 $food_cat = new Food_pet('Croccantini', 5.99, $cat, [ 'carote', 'patate', 'acqua']);
 $food_cat->image = './img/croccantini_gatti.jpg';
 $food_cat->description='Croccantini gustosi per gatti';
+$food_cat->made_in='ITA';
 
 $kennel_cat = new Kennel_pet('Cat house', 40.00, $cat);
 $kennel_cat->size = 'XL';
 $kennel_cat->image = './img/cuccia_gatti.jpg';
 $kennel_cat->description='Cuccia confortevole per gatti';
+$kennel_cat->made_in='USA';
 
 $game_cat = new Game_pet('Palla di pelo', 7.99, $cat);
 $game_cat->image = './img/giochi_gatti.jpeg';
 $game_cat->description='Gioco perfetto per il tuo animaletto a 4 zampe';
+$game_cat->made_in='CHINA';
+
 
 $produts = [
 
@@ -141,7 +148,7 @@ $produts = [
                         }
                         ?>
                         <div class="col-3 m-2">
-                            <div class="card ms_card bg-success" style="width:250px ;height:500px;">
+                            <div class="card ms_card bg-success" style="width:250px ;height:550px;">
                                 <img src="<?php echo $single_product->image; ?>" class="card-img-top" alt="...">
                                 <div class="card-header bg-success text-white">
                                     <?php echo $single_product->name; ?>
@@ -169,6 +176,10 @@ $produts = [
                                          Ingredienti : <?php echo implode(', ', $single_product->ingredients); ?>
                                         </li>
                                     <?php } ?>
+                                    <li class="list-group-item text-white bg-success">
+                                        Paese di Provenienza: 
+                                        <small><?php echo $single_product->made_in; ?></small>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
